@@ -1,0 +1,391 @@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./css/main.css?v=1.1">
+    <script type="text/javascript" src="./js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="./js/versionChecker.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117094937-1"></script>
+    <script>
+        try{
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-117094937-1');
+        } catch(e){
+            // debug
+            // console.log(e);
+        }
+    </script><title>FanTube</title>
+</head>
+<body class="no-text-select">
+<div class="fantube-header">
+            <!-- generation 1 : go to index -->
+        <a href="./index.php?os=&version=&device=&os_version=&webview="><img class="fantube-header__btn-back" src="./img/ic_arrow_back_black@2x.png" alt=""></a><span>‘’고민보다Go‘’的後台準備</span>
+    </div>
+<div id="main_video_player" class="fantube-player">
+    <!-- player -->
+</div>
+<div class="fantube-movie-subtitle-box">
+    <!-- 자막 -->
+</div>
+<div class="fantube-footer player">
+    <div class="fantube-footer__subtitle-list">
+        <div class="fantube-footer__subtitle-list__row" data-main-lang="2" data-subtitle-key="0">한국어</div>
+                    <div class="fantube-footer__subtitle-list__row" data-main-lang="1" data-subtitle-key="sub01">한/繁</div>
+            <div class="fantube-footer__subtitle-list__row" data-main-lang="0" data-subtitle-key="sub01">繁體字</div>
+            </div>
+    <div class="fantube-footer__player-col" id="subtitle_select_btn">한/繁</div>
+    <div class="fantube-footer__player-col prev-btn"></div>
+    <div class="fantube-footer__player-col play-btn"></div>
+    <div class="fantube-footer__player-col next-btn"></div>
+    <div class="fantube-footer__player-col repeat-btn active"></div>
+</div>
+
+<!-- loading -->
+<div class="fantube-movie__loading-bg"></div>
+
+<!-- 자막 template -->
+<div id="subtitle_elem_template" class="fantube-movie__subtitle" style="display:none;" data-start-time="" data-end-time="" data-sub-idx="">
+    <div class="fantube-movie__subtitle-row">
+        <div class="fantube-movie__subtitle-contents">
+            <div class="fantube-movie__subtitle-main"></div>
+            <div class="fantube-movie__subtitle-sub"></div>
+        </div>
+        <div class="fantube-movie__subtitle-repeat-box">
+            <div class="fantube-movie__subtitle-repeat-btn"></div>
+        </div>
+    </div>
+</div>
+<!---->
+
+<script type="text/javascript" src="./js/vod02.js"></script>
+<script type="text/javascript" src="./js/nativeBridgeFunctions.js"></script>
+<script>
+    // Youtube Video ID
+    var g_videoId = "jG8NHX-W_Cc";
+    var subtitleContents = {
+  "version": "1.0",
+  "mainLanguage": "한국어",
+  "subLanguage": {"sub01": "繁體字"},
+  "contents":
+  [
+  {
+      "start": 24,
+      "end": 38,
+      "subtitles": { "main": " - 잘하고 오겠습니다!","sub01":" - 完成好后回來哦!"}
+  },
+  {
+      "start": 38,
+      "end": 43,
+      "subtitles": { "main": " - 멤버분들 일곱 분 준비 다 되시면 같이 올라갈게요.","sub01":" - 成員們七位全部準備好的話一起上去哦"}
+  },
+  {
+      "start": 43,
+      "end": 44,
+      "subtitles": { "main": " - 네!","sub01":" - 好"}
+  },
+  {
+      "start": 44,
+      "end": 45,
+      "subtitles": { "main": " - 네, 알겠습니다!","sub01":" - 好，知道了！"}
+  },
+  {
+      "start": 45,
+      "end": 47,
+      "subtitles": { "main": " - 아, 이 우리 멤버들","sub01":" - 啊...這，我們的成員們"}
+  },
+  {
+      "start": 47,
+      "end": 49,
+      "subtitles": { "main": " - 3등 일루 오세요. <br> - 3등까지 봐준다. <br> - 그래~ ","sub01":" - 第3名來這裡. <br> - 只放過到第3名. <br> - 好的~ "}
+  },
+  {
+      "start": 49,
+      "end": 50,
+      "subtitles": { "main": " - 3등 누구야?","sub01":" - 第3名是誰?"}
+  },
+  {
+      "start": 50,
+      "end": 52,
+      "subtitles": { "main": " - 3등? <br> - 여기있네, 3등","sub01":" - 第3名? <br> - 在這裡欸，第3名"}
+  },
+  {
+      "start": 52,
+      "end": 53,
+      "subtitles": { "main": " - 아, 제이홉~ 역시 제이홉!","sub01":" - 啊~J-Hope！~ 果然是 J-Hope !"}
+  },
+  {
+      "start": 53,
+      "end": 54,
+      "subtitles": { "main": " - 역시 제이홉!","sub01":" - 果然是 J-Hope !"}
+  },
+  {
+      "start": 54,
+      "end": 55,
+      "subtitles": { "main": " - 역시 <br> - 나 3등이야? <br> - 3등의 아이콘","sub01":" - 果然 <br> - 我是第3名嗎？? <br> - 第3名的人物"}
+  },
+  {
+      "start": 55,
+      "end": 56,
+      "subtitles": { "main": " - 네? <br> - 네 <br> - 3등? <br> - 네","sub01":" - 嗯? <br> - 是 <br> - 第3名? <br> - 嗯啊"}
+  },
+  {
+      "start": 56,
+      "end": 60,
+      "subtitles": { "main": " - 7등 누구야?","sub01":" - 第7名是誰?"}
+  },
+  {
+      "start": 60,
+      "end": 68,
+      "subtitles": { "main": " - 6등 정국이 <br> - 5등 랩몬형 <br> - 7등 슈가형  ","sub01":" - 第6名是柾國 <br> - 第5名是Rap-Mon <br> - 第7名是Suga哥  "}
+  },
+  {
+      "start": 68,
+      "end": 70,
+      "subtitles": { "main": " - 저희가 이번에 고민보다 Go 인데,","sub01":" - 我們這次是‘고민보다 Go’ 的"}
+  },
+  {
+      "start": 70,
+      "end": 73,
+      "subtitles": { "main": " - 옷을 되게 인트로가 되게 독특해요.","sub01":" - 服裝非常地， 前奏非常地獨特."}
+  },
+  {
+      "start": 73,
+      "end": 76,
+      "subtitles": { "main": " - 멤버마다 제스처를 하고 올라가는데","sub01":" - 每位成員都做著（不同的）姿勢上去"}
+  },
+  {
+      "start": 76,
+      "end": 84,
+      "subtitles": { "main": " - 멋있는 척 하겠지?","sub01":" - 應該會裝得很帥吧?"}
+  },
+  {
+      "start": 84,
+      "end": 88,
+      "subtitles": { "main": " - 와우 어디 거야?","sub01":" - 哇噢~哪裡的?"}
+  },
+  {
+      "start": 88,
+      "end": 90,
+      "subtitles": { "main": " - 형! 인트로 때 뭐할 거예요?","sub01":" - 哥！前奏的時候會做什麼?"}
+  },
+  {
+      "start": 90,
+      "end": 91,
+      "subtitles": { "main": " - 너 뭐할 거야?","sub01":" - 你會做什麼呢?"}
+  },
+  {
+      "start": 91,
+      "end": 94,
+      "subtitles": { "main": " - 저요?","sub01":" - 我啊?"}
+  },
+  {
+      "start": 94,
+      "end": 97,
+      "subtitles": { "main": " - 와 진짜, 완전 식상하죠, 그죠?","sub01":" - 哇真的， 簡直膩炸了吧, 是吧?"}
+  },
+  {
+      "start": 97,
+      "end": 98,
+      "subtitles": { "main": " - 뭐 할거야, 형?","sub01":" - 會做什麼呢，哥?"}
+  },
+  {
+      "start": 98,
+      "end": 100,
+      "subtitles": { "main": " - 형, 뭐 하나 해야죠~","sub01":" - 哥，怎麼樣也要做一個吧~"}
+  },
+  {
+      "start": 100,
+      "end": 109,
+      "subtitles": { "main": " - 아니면 형 옷 입는 것처럼","sub01":" - 要不，像哥穿的衣服一樣"}
+  },
+  {
+      "start": 109,
+      "end": 112,
+      "subtitles": { "main": " - 어, 맞아, 형! 형 4등인데 혼나야 돼요.","sub01":" - 噢，對了，哥！哥是第4名，要給教訓"}
+  },
+  {
+      "start": 112,
+      "end": 115,
+      "subtitles": { "main": " - 아, 맞아. 혼낼 거야.","sub01":" - 啊對，我會教訓的"}
+  },
+  {
+      "start": 115,
+      "end": 118,
+      "subtitles": { "main": " - 지금 ARMY 분들이 기다리고 있는데...","sub01":" - 現在ARMY們在等著呢..."}
+  },
+  {
+      "start": 118,
+      "end": 120,
+      "subtitles": { "main": " - ARMY분들이 다 기다리는데 지금 늦으면 어떡해요!","sub01":" - ARMY們全都在等呢，現在怎麼能遲到！"}
+  },
+  {
+      "start": 120,
+      "end": 127,
+      "subtitles": { "main": " - 형, 5등은 형이 뭐라 해야 돼요~","sub01":" - 哥，第5名，哥要說他點什麼啊~"}
+  },
+  {
+      "start": 127,
+      "end": 130,
+      "subtitles": { "main": " - 알았어~","sub01":" - 收到~"}
+  },
+  {
+      "start": 130,
+      "end": 132,
+      "subtitles": { "main": " - 전정국 뭐라하기 무서운데, 진짜...","sub01":" - 說全柾國的話有點害怕哦，真的..."}
+  },
+  {
+      "start": 132,
+      "end": 139,
+      "subtitles": { "main": " - 봤죠? 자... <br> - 6등 랩몬형, 7등 슈가형!","sub01":" - 看到了吧? 來... <br> - 第6名Rap-mon,第7名Suga哥!"}
+  },
+  {
+      "start": 139,
+      "end": 141,
+      "subtitles": { "main": " - 온다, 온다, 온다, 아...","sub01":" - 來了，來了，來了，啊..."}
+  },
+  {
+      "start": 141,
+      "end": 142,
+      "subtitles": { "main": " - 정국이한테 어떻게 뭐라 해야되냐..?","sub01":" - 要對小柾國怎麼樣說點什麼呢..?"}
+  },
+  {
+      "start": 142,
+      "end": 143,
+      "subtitles": { "main": " - 정국아, 일루와~","sub01":" - 柾國，來這邊~"}
+  },
+  {
+      "start": 143,
+      "end": 145,
+      "subtitles": { "main": " - 야, 정국아. 일루와봐~","sub01":" - 喂，柾國，來這邊看看~"}
+  },
+  {
+      "start": 145,
+      "end": 153,
+      "subtitles": { "main": " - 야, 왜 늦어?","sub01":" - 呀~為什麼遲到？"}
+  },
+  {
+      "start": 153,
+      "end": 155,
+      "subtitles": { "main": " - 마!","sub01":" - Ma!"}
+  },
+  {
+      "start": 155,
+      "end": 161,
+      "subtitles": { "main": " - 마! 뒤 안보나? 어?","sub01":" - Ma! 不看後面嗎 ? 嗯?"}
+  },
+  {
+      "start": 161,
+      "end": 163,
+      "subtitles": { "main": " - 마! <br> - 형, 진수를 보여줘, 빨리!","sub01":" - Ma! <br> - 哥，給他來點真的, 快!"}
+  },
+  {
+      "start": 163,
+      "end": 168,
+      "subtitles": { "main": " - 놔봐, 놔봐, 놔바, 놔바, 놔바, 놔바...","sub01":" - 放，放，放，放，放..."}
+  },
+  {
+      "start": 168,
+      "end": 169,
+      "subtitles": { "main": " - 마!","sub01":" - Ma!"}
+  },
+  {
+      "start": 169,
+      "end": 171,
+      "subtitles": { "main": " - 내가 마지막이 아니잖아.","sub01":" - 我不是不是最後一個嘛."}
+  },
+  {
+      "start": 171,
+      "end": 175,
+      "subtitles": { "main": " - 너가 이제 6등 뭐라 해야지. <br> - 나도 3등한테 혼났어.","sub01":" - 你現在要向第6名說點什麼了. <br> - 我也被第3名教訓了."}
+  },
+  {
+      "start": 175,
+      "end": 178,
+      "subtitles": { "main": " - 야, 6등 누구일 거 같냐?","sub01":" - 嘿，你覺得第6名會是誰呢?"}
+  },
+  {
+      "start": 178,
+      "end": 181,
+      "subtitles": { "main": " - 7등 슈가형","sub01":" - 第7名是Suga哥"}
+  },
+  {
+      "start": 181,
+      "end": 187,
+      "subtitles": { "main": " - 윤기 뭐라 하는 게 좋아, 남준이 뭐라 하는 게 좋아?","sub01":" - 你喜歡說玧其還是南俊?"}
+  },
+  {
+      "start": 187,
+      "end": 190,
+      "subtitles": { "main": " - 둘 다 뭐라 해~","sub01":" - 兩個都說說~"}
+  },
+  {
+      "start": 190,
+      "end": 192,
+      "subtitles": { "main": " - 아, 역시. 강한 자는 달라...","sub01":" - 啊~果然，強悍的人不一樣啊..."}
+  },
+  {
+      "start": 192,
+      "end": 195,
+      "subtitles": { "main": " - 온다, 온다, 온다, 온다, 온다...","sub01":" - 來了，來了，來了，來了，來了..."}
+  },
+  {
+      "start": 195,
+      "end": 196,
+      "subtitles": { "main": " - 6등 왔다, 6등 왔다, 6등 왔다...","sub01":" - 第6名來了，第6名來了，第6名來了..."}
+  },
+  {
+      "start": 196,
+      "end": 198,
+      "subtitles": { "main": " - 남준이? 남준이? ","sub01":" - 南俊? 南俊? "}
+  },
+  {
+      "start": 203,
+      "end": 206,
+      "subtitles": { "main": " - 그래~ 진짜 정확하게, 저희는...","sub01":" - 啊沒錯，就是南俊~"}
+  },
+  {
+      "start": 206,
+      "end": 209,
+      "subtitles": { "main": " - 저희 준비된 멤버분들부터 무대 위로 올라갈게요.","sub01":" - 我們準備好的成員們先上舞台上吧."}
+  },
+  {
+      "start": 209,
+      "end": 212,
+      "subtitles": { "main": " - 무대 올라가니까 봐준다, 진짜...","sub01":" - 要上舞台了先放過你，真是的..."}
+  },
+  {
+      "start": 212,
+      "end": 216,
+      "subtitles": { "main": " - 시간이 없는 관계로 드라이는 생략하고 바로 카메라 리허설 가도록 하겠습니다. <br> - 아오, 진짜, 내가, 아오, 진짜...","sub01":" - 因為時間不夠的原因， 不來干的，直接看著鏡頭預演吧。 <br> - 啊真是的, 我, 啊真是的..."}
+  },
+  {
+      "start": 216,
+      "end": 218,
+      "subtitles": { "main": " - 아, 내가 진짜 따끔하게 한 마디 하려고 했는데. 아 진짜...","sub01":" - 啊...我本來真的想狠狠地教訓一句的呢.，啊真是的..."}
+  },
+  {
+      "start": 218,
+      "end": 220,
+      "subtitles": { "main": " - 내가 진짜 다다다다다다, 진짜, 한마디 탁...","sub01":" - 我真的dadadadada, 真的，一句話就..."}
+  },
+  {
+      "start": 220,
+      "end": 225,
+      "subtitles": { "main": " - 내가 속사포 랩처럼 옛날에 아웃사이더에서 맨날 랩 외톨이처럼.,.","sub01":" - 我會像機關槍rap一樣， 像以前在outsider里成天的rap孤兒一樣.,."}
+  },
+  {
+      "start": 225,
+      "end": 229,
+      "subtitles": { "main": " - 마 상처를 치료해줄 사람 어디 없나! 아~ 진짜...","sub01":" - 沒有給我治療傷痛的人嗎？! 啊...真是的..."}
+  }
+]
+};
+</script>
+</body>
+</html>
