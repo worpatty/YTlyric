@@ -1,0 +1,826 @@
+/* common */
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    padding:0;
+}
+
+.no-text-select{
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+/* FED-01 */
+.list--movie-box{
+    width:100%;
+    height:100vh;
+    padding-bottom:45px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-color: #dfdfdf;
+    -webkit-overflow-scrolling: touch;
+}
+.movie-box{
+    margin-bottom:2vw;
+    padding:2vw;
+    background-color: #fff;
+    overflow:hidden;
+}
+.movie-box__profile{
+    overflow:hidden;
+}
+.movie-box__col{
+    display:inline-block;
+    float:left;
+    height:10vw;
+}
+.movie-box__col.col-artist{
+    width:10vw;
+}
+.movie-box__col.col-mov-info{
+    width:86vw;
+    padding-left:2vw;
+}
+.movie-box__artist-pic{
+    width:10vw;
+    height:10vw;
+}
+.movie-box__artist-name{
+    line-height:5vw;
+    font-size:3.7vw;
+    font-weight:bold;
+}
+.movie-box__artist-desc,
+.movie-box__movie-time{
+    font-size:2.8vw;
+    line-height:5vw;
+    color:#a8a8a8;
+}
+.movie-box__description{
+    margin-top:3vw;
+    font-size:4vw;
+}
+.movie-box__tag{
+    padding:1vw;
+    font-size:3vw;
+    font-weight:bold;
+}
+.movie-box__tag a{
+    text-decoration: none;
+}
+.movie-box__tag span{
+    margin-right:3vw;
+    color: #7f7f7f;
+}
+.movie-box__thumbnail{
+    display:block;
+    position:relative;
+    margin-top:1vw;
+    width:96vw;
+    height:48vw;
+    overflow: hidden;
+}
+.movie-box__thumbnail-pic{
+    width:100%;
+}
+.movie-box__thumbnail-pic.youtube{
+    position: absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    width:100%;
+    height: auto;
+}
+.movie-box__title{
+    height:8.5vw;
+    line-height:8.5vw;
+    font-size:4vw;
+    font-weight: bold;
+}
+.loading--movie-list{
+    display:none;
+    width:100%;
+    height:50px;
+    background-image: url(../img/ajax-loader.gif);
+    background-position: 50% 50%;
+    background-size:contain;
+    background-repeat:no-repeat;
+}
+
+/* VOD-01 */
+.fantube-greeting-box{
+    display:table;
+    width:100%;
+    /* heightëŠ” jsë¡œ ê³„ì‚° */
+    text-align: center;
+    background-color: #dfdfdf;
+}
+.fantube-greeting-box__middle-box{
+    display:table-cell;
+    width:100%;
+    vertical-align: middle;
+}
+.fantube-footer--logo{
+    width:100%;
+    height:65px;
+    background: #dfdfdf;
+    text-align: center;
+    background-image: url(../img/logo@2x.png);
+    background-repeat:no-repeat;
+    background-position: 50% 50%;
+    background-size: 87px 32px;
+}
+/* VOD-02 */
+.fantube-header{
+    padding:10px;
+    width:100%;
+    height:45px;
+    line-height:25px;
+    background-color: #fff;
+    color:#000;
+    font-size:4vw;
+    border-bottom:solid 1px #bcbcbc;
+}
+.fantube-header > a{
+    width:24px;
+    vertical-align: top;
+}
+.fantube-header > span{
+    display: inline-block;
+    width:calc(100% - 30px);
+    vertical-align: top;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.fantube-player{
+    width:100%;
+    height:57vw;
+}
+.fantube-movie-tag{
+    width:100%;
+    height:45px;
+    line-height:45px;
+    border-bottom:solid 1px #dfdfdf;
+}
+.fantube-movie-tag__link{
+    padding-left:10px;
+    font-size:12px;
+    font-weight: bold;
+    color:#000;
+    text-decoration: none;
+}
+.fantube-movie-subtitle-box{
+    padding-bottom:50px;
+    width:100%;
+    height:calc(100vh - 57vw - 90px); /* ì „ì²´ ë†’ì´ - Player ë†’ì´ - ìƒ/í•˜ë‹¨ ë©”ë‰´(45, 45) */
+    min-height:300px;
+    background-color: #fff;
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+}
+.fantube-movie__subtitle{
+    display:table;
+    width:100%;
+    padding:3px 0;
+    background-color: #fff;
+    border-bottom:solid 1px #f5f5f5;
+}
+.fantube-movie__subtitle-row{
+    display:table-row;
+    width:100%;
+    height:50px;
+}
+.fantube-movie__subtitle-time{
+    display:table-cell;
+    width:10%;
+    height:50px;
+    text-align: center;
+    color:#a1a1a1;
+    font-size:9px;
+    vertical-align: middle;
+}
+.fantube-movie__subtitle-contents{
+    display:table-cell;
+    width:80%;
+    min-height:50px;
+    padding-left:20px;
+    font-size:15px;
+    line-height:22px;
+    color:#BFBFBF;
+    vertical-align: middle;
+}
+.fantube-movie__subtitle-main{
+    font-weight:bold;
+}
+.fantube-movie__subtitle-repeat-box{
+    display:table-cell;
+    width:10%;
+    vertical-align: middle;
+    text-align: center;
+}
+.fantube-movie__subtitle-repeat-btn{
+    display:inline-block;
+    width:25px;
+    height:24px;
+    background-image:url('../img/ic_refresh@2x.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.fantube-movie__subtitle-repeat-btn.active{
+    background-image:url('../img/ic_refresh_select@2x.png');
+}
+.fantube-movie__subtitle.active{
+    background-color: #DCF6FC;
+}
+.fantube-movie__subtitle.active .fantube-movie__subtitle-contents{
+    color:#000;
+}
+.fantube-movie__loading-bg{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:calc(100vh - 45px);
+    background: rgba(0,0,0,0.5) url('../img/ajax-loader2.gif') 50% 50%;
+    background-repeat: no-repeat;
+}
+
+/* src01 */
+.fantube-header--form{
+    margin-bottom:0;
+    background-color: #fff;
+    overflow:hidden;
+    border-bottom:solid 1px #bcbcbc;
+}
+.fantube-header__search{
+    float:left;
+    padding:10px;
+    width:calc(100% - 45px);
+    height:45px;
+    border: none;
+    font-size:14px;
+}
+.fantube-header__search-icon{
+    float:left;
+    width:45px;
+    height:45px;
+    background-image: url(../img/tab_search@2x.png);
+    background-repeat: no-repeat;
+    background-color: #fff;
+    background-position:50% 50%;
+    background-size: 40px;
+    border: none;
+    opacity:0.6;
+}
+
+.featured-carousel-box{
+    position:relative;
+}
+.featured-carousel{
+    width:100%;
+    height:200px;
+}
+.featured-carousel__img, .featured-carousel__img img{
+    width:100%;
+    height:200px;
+}
+.featured-carousel__info{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:70px;
+    background-color: rgba(0,0,0, 0.5);
+}
+.featured-carousel__description{
+    height:40px;
+    line-height:40px;
+    font-size:16px;
+    font-weight: bold;
+    color:#fff;
+    text-align: center;
+}
+.featured-carousel__dots{
+    text-align: center;
+}
+.featured-carousel__dot{
+    display:inline-block;
+    width:15px;
+    height:30px;
+    background-image: url(../img/carousel_off@2x.png);
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+    background-size: 9px;
+}
+.featured-carousel__dot.active{
+    background-image: url(../img/carousel_on@2x.png);
+}
+
+.featured-movie-list{
+    height: calc(100vh - 246px);
+    padding-bottom: 45px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.featured-movie-box{
+    padding:10px;
+    border-bottom:solid 1px #dbdbdb;
+    overflow:auto;
+}
+.featured-movie-photo, .featured-movie-photo img{
+    width:134px;
+    height:74px;
+}
+.featured-movie-photo{
+    float:left;
+}
+.featured-movie-info-box{
+    width:calc(100% - 154px);
+    padding-left:10px;
+    float:left;
+    min-height:74px;
+}
+.featured-movie-title{
+    font-size:16px;
+    font-weight: bold;
+}
+.featured-movie-title a {
+    text-decoration: none;
+    color:#000;
+}
+.featured-movie-artist-and-time{
+    line-height:20px;
+    font-size:10px;
+    color:#a1a1a1;
+}
+.featured-movie-tags{
+    line-height:20px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* src02 */
+.fantube-search__title--small{
+    height:30px;
+    line-height:30px;
+    padding: 0 10px;
+    background-color: #dfdfdf;
+    font-size:15px;
+    color:#303030;
+}
+.fantube-search__tag-box{
+    padding:10px;
+    width:100%;
+    min-height:45px;
+    background-color: #fff;
+}
+.fantube-search__tag-box a{
+    margin-right:10px;
+    text-decoration: none;
+    color:#000;
+    font-size:14px;
+    font-weight: bold;
+    line-height:20px;
+}
+.fantube-search__mov-list{
+    padding-bottom: 45px;
+    height: calc(100vh - 151px);
+    overflow-y: auto;
+}
+
+.fantube-search__no-result-container{
+    display:table;
+    width:100%;
+    height:calc(100vh - 94px);
+    background-color: #f5f5f5;
+}
+.fantube-search__no-result-middle-box{
+    display:table-cell;
+    width:100%;
+    text-align: center;
+    vertical-align: middle;
+}
+.fantube-search__no-result-image{
+
+}
+.fantube-search__no-result-text{
+    margin:25px 0;
+    font-size:15px;
+}
+
+/* fan01 */
+.fantube-tag-bg{
+    position:relative;
+    width:100%;
+    height:250px;
+}
+.fantube-tag-back-btn{
+    position:absolute;
+    top:5px;
+    left:5px;
+    width:30px;
+    height:30px;
+    background-image: url(../img/ic_arrow_back@2x.png);
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+    background-size: 24px;
+}
+.fantube-tag-bg__img{
+    position:relative;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    filter:blur(2px);
+}
+.fantube-tag-thumbnail{
+    position:absolute;
+    top:40px;
+    left:0;
+    width:100%;
+    text-align: center;
+}
+.fantube-tag-thumbnail__img{
+    width:106px;
+    height:106px;
+    border-radius: 50%;
+}
+.fantube-tag-name{
+    position: absolute;
+    top:156px;
+    left:0;
+    width:100%;
+    text-align: center;
+    color:#fff;
+    font-size:16px;
+    font-weight: bold;
+}
+.fantube-tag-desc{
+    position: absolute;
+    top:186px;
+    left:0;
+    width:100%;
+    text-align: center;
+    color:#fff;
+    font-size:12px;
+}
+.fantube-tag-clips{
+    position: absolute;
+    top:216px;
+    left:0;
+    width:100%;
+    text-align: center;
+    color:#fff;
+    font-size:12px;
+    font-weight:bold;
+}
+.fantube-tag-mov-list{
+    height:calc(100vh - 250px);
+    overflow-y:auto;
+}
+
+/* myp01 */
+.fantube-setting-container{
+    height:100vh;
+    background-color: #56C5DE;
+}
+.fantube-setting-container a{
+    text-decoration: none;
+}
+.fantube-setting__row{
+    padding:20px;
+    background-color: #fff;
+    font-size:4vw;
+    color:#606060;
+    border-bottom:solid 2px #dfdfdf;
+}
+.fantube-modal__bg{
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+.fantube-modal__modal{
+    margin-top:calc(50vh - 100px);
+    margin-left:auto;
+    margin-right:auto;
+    width:calc(100% - 100px);
+    height:200px;
+    background-color: #fff;
+    text-align: center;
+}
+.fantube-modal__header{
+    height:40px;
+}
+.fantube-modal__message{
+    height:100px;
+    padding:30px 15px 0 15px;
+    font-size:16px;
+    color:#333;
+    text-align: center;
+}
+.fantube-modal__footer{
+    height:60px;
+    text-align: center;
+}
+.fantube-modal__dismiss{
+    display: inline-block;
+    float:right;
+    width:40px;
+    height:40px;
+    background-image: url(../img/modal_close@2x.png);
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+    background-size: 12px;
+}
+.fantube-modal__button.close{
+    display:inline-block;
+    padding:10px 20px;
+    color:#fff;
+    background-color: #969696;
+    font-size:12px;
+}
+
+/* req01 */
+.fantube-request-logo{
+    width:100%;
+    height:200px;
+    padding-top: 70px;
+    line-height: 32px;
+    text-align: center;
+    font-size:18px;
+    font-weight: bold;
+    color:#fff;
+    background-image: url(../img/pic_concert.png);
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.fantube-request__label{
+    padding-left:20px;
+    height:45px;
+    background-color: #fff;
+    line-height:45px;
+    font-size:14px;
+    font-weight: bold;
+    color:#333;
+    border-bottom:solid 1px #dadada;
+}
+.fantube-request__input{
+    padding-left:20px;
+    width:100%;
+    height:45px;
+    line-height:45px;
+    border:none;
+    border-bottom:solid 1px #dadada;
+    font-size:12px;
+    color:#333;
+}
+.fantube-request__submit-btn{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:45px;
+    line-height:45px;
+    text-align: center;
+    font-size:18px;
+    font-weight: bold;
+    color:#fff;
+    border:none;
+    background-color: #d6d6d6;
+}
+.fantube-request__submit-btn.active{
+    background-color: #303030;
+}
+
+/* footer */
+.fantube-footer{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:48px;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+.fantube-footer__default-col{
+    width:calc(100% / 3);
+    float:left;
+    height:48px;
+    background-position: 50% 50%;
+    background-repeat:no-repeat;
+}
+.fantube-footer__default-col.main-feed{
+    background-image:url(../img/tab_feed@2x.png);
+    background-size: 40px;
+}
+.fantube-footer__default-col.search{
+    background-image:url(../img/tab_search@2x.png);
+    background-size: 40px;
+}
+.fantube-footer__default-col.setting{
+    background-image:url(../img/tab_option@2x.png);
+    background-size: 40px;
+}
+.fantube-footer__default-col > a{
+    display:inline-block;
+    width:100%;
+    height:48px;
+}
+
+.fantube-footer.player{
+    height:45px;
+    background-color: #f3f3f3;
+    border-top:solid 1px #dbdbdb;
+}
+.fantube-footer__subtitle-list{
+    display:none;
+    position:absolute;
+    left:0;
+    bottom:45px;
+    width:20vw;
+    min-width:100px;
+    background-color: #f3f3f3;
+    border-right:solid 1px #dbdbdb;
+    overflow:hidden;
+}
+.fantube-footer__subtitle-list__row{
+    height:40px;
+    line-height:40px;
+    border-top:solid 1px #dbdbdb;
+    text-align: center;
+}
+.fantube-footer__player-col{
+    display:inline-block;
+    float:left;
+    width:20%;
+    height:45px;
+    line-height:45px;
+    font-size:13px;
+    text-align: center;
+    background-size:auto;
+    background-position:50%;
+    background-repeat:no-repeat;
+}
+.fantube-footer__player-col.prev-btn{
+    background-image:url('../img/prev@2x.png');
+    background-size: 40px;
+}
+.fantube-footer__player-col.play-btn{
+    background-image:url('../img/play@2x.png');
+    background-size: 40px;
+}
+.fantube-footer__player-col.play-btn.pause-btn{
+    background-image:url('../img/pause@2x.png');
+    background-size: 40px;
+}
+.fantube-footer__player-col.next-btn{
+    background-image:url('../img/next@2x.png');
+    background-size: 40px;
+}
+.fantube-footer__player-col.repeat-btn{
+    background-image:url('../img/play_repeat_all_off@2x.png');
+    background-size: 31px 20px;
+}
+.fantube-footer__player-col.repeat-btn.active{
+    background-image:url('../img/play_repeat_all_on@2x.png');
+    background-size: 31px 20px;
+}
+.fantube-header__btn-back{
+    width: 24px;
+    height: 24px;
+}
+/*update ê³µì§€*/
+.fantube-update__wrapper{
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-color: #ededed;
+  display: inline-block;
+}
+.fantube-update__wrapper > .container--update{
+  float: left;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+}
+.img--update__logo{
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+.logo-update__character{
+  width: 60px;
+}
+.logo-update__name{
+  width: 150px;
+  margin-top: 20px;
+}
+.text--update__title{
+  width: 100%;
+  float: left;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: -2px;
+}
+.text--update-title__orange{
+  color: #ea9502;
+}
+.text--update__description{
+  width: 100%;
+  float: left;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #000;
+}
+.text--update__link{
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4e4c4d;
+  margin-top: 20px;
+}
+.btn--update__link{
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+.img--update__link{
+  width: 200px;
+  margin-top: 10px;
+}
+.text--update__time{
+  font-size: 1rem;
+  color:#000;
+  font-weight: bold;
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+.movie-box > .content__notice{
+  background-color: #ededed;
+  width: 100%;
+  float: left;
+}
+.header--notice__close{
+  font-size: 0.8rem;
+  width: 100%;
+  float: left;
+  text-align: right;
+  padding: 10px 10px 10px 0px;
+}
+.header--notice__close a{
+  color: #000;
+  text-decoration: none;
+}
+.header--notice__title{
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+.img--notice__logo img{
+  width: 180px;
+}
+.img--notice__logo{
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #4e4c4d;
+  margin-top: 5px;
+}
+.text--notice__time{
+  font-size: 1rem;
+  color:#000;
+  font-weight: bold;
+  width: 100%;
+  float: left;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.text--notice__description{
+  font-size: 0.8rem;
+  width: 100%;
+  float: left;
+  text-align: center;
+  color: #000;
+  padding: 10px;
+}
